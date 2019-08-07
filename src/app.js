@@ -53,7 +53,7 @@ app.get('/help', (req, res) => {
 app.get('/weather', (req, res) => {
     if(!req.query.location) {
         return res.send({
-            error: 'you must provide a location!'
+            error: 'You must provide a location!'
         })
     }
 
