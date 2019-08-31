@@ -12,7 +12,7 @@ const publicDirectoryPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
 const partialsPath = path.join(__dirname, '../templates/partials');
 
-//Setup handlerbars engine and vies location
+//Setup handlebars engine and vies location
 app.set('views', viewsPath);
 app.set('view engine', 'hbs');
 hbs.registerPartials(partialsPath);
@@ -51,6 +51,20 @@ app.get('/help', (req, res) => {
 })  */
 
 app.get('/weather', (req, res) => {
+
+    if (req.query.latitude && req.query.longitude) {
+
+        return forecast(req.query.latitude, req.query.longitude, (error, forecastResponse) => {
+                if (error) {
+                    return res.send({error});
+                }
+
+                res.send({
+                    forecast: forecastResponse
+                })   
+        })      
+    }
+
     if(!req.query.location) {
         return res.send({
             error: 'You must provide a location!'
@@ -76,18 +90,6 @@ app.get('/weather', (req, res) => {
             })   
         })        
     })
-})
-
-app.get('/products', (req, res) => {
-    if (!req.query.search) {
-        return res.send({
-            error: 'you must provide a search term!'
-        })
-    }
-    console.log(req.query.search);
-    res.send({
-        products: []
-    });
 })
 
 app.get('/help/*', (req, res) => {

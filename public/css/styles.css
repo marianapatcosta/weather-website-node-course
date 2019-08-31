@@ -52,5 +52,10 @@ button {
     background: #888888;
     color: white;
     padding: 8px;
+}
 
+#send-location {
+    margin-top: 15px;
+    border-radius: 0%;
+    background: #888888;
 }
