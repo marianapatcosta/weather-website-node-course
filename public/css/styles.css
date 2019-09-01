@@ -38,6 +38,7 @@ header a {
 
 .main-content {
     flex-grow: 1;
+    width: 400px;
 }
 
 input {
@@ -54,8 +55,15 @@ button {
     padding: 8px;
 }
 
+p {
+    font-size: 14px;
+    line-height: 1.4;
+    width: 100%;
+}
+
 #send-location {
     margin-top: 15px;
     border-radius: 0%;
     background: #888888;
 }
+
